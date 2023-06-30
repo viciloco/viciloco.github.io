@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>ViciLoco - FAQ</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans&family=Montserrat&family=Lato&family=Raleway&family=Roboto&family=Poppins&family=Nunito&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+#noselect {
+  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Old versions of Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome, Edge, Opera and Firefox */
+}
+    header, footer {
+      font-size: 16px;
+    }
+    body {
+      font-size: 20px;
+    }
+    .faq-item {
+      margin-bottom: 20px;
+    }
+    .faq-question {
+      cursor: pointer;
+      font-weight: bold;
+    }
+    .faq-answer {
+      display: none;
+      background: #eafae3;
+    }
+  .faq-question::after {
+    content: "\25BE"; /* Unicode arrow-down character */
+    float: right;
+  }
+
+  .faq-question.open::after {
+    content: "\25B4"; /* Unicode arrow-up character */
+  }
+
+.faq-question.closed::after {
+  content: "\25BE"; /* Unicode arrow-down character */
+}
+
+.faq-question.open::after {
+  content: "\25B4"; /* Unicode arrow-up character */
+}
+
+  </style>
+</head>
+<body>
+  <header>
+    <nav>
+      <ul>
+        <li><img style="width: 200px" src="logo.png" alt="ViciLoco"></li>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Plus</a></li>
+        <li><a href="#">Login</a></li>
+        <li><a href="#">Sign Up</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <br><br><section class="faq-section">
+    <div class="container">
+      <h1>Frequently Asked Questions</h1><br>
+      <div class="faq-item">
+        <div id="noselect" class="faq-question">How do I create an account?</div>
+        <div class="faq-answer" id="answer1">
+          <p>To create an account on ViciLoco, follow these steps:</p>
+          <ol>
+            <li>Click on the "Sign Up" button on the homepage.</li>
+            <li>Provide the required information, such as your name, email address, and password.</li>
+            <li>Agree to the Terms of Use and Privacy Policy.</li>
+            <li>Click on the "Sign Up" button to complete the registration process.</li>
+          </ol>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div id="noselect" class="faq-question" onclick="toggleAnswer(event, 2)">Can I use ViciLoco on multiple devices?</div>
+        <div class="faq-answer" id="answer2">
+          <p>Yes, you can use ViciLoco on multiple devices. Simply log in to your account from the device you wish to use, and you'll have access to your account and all its features.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div id="noselect" class="faq-question" onclick="toggleAnswer(event, 3)">How can I reset my password?</div>
+        <div class="faq-answer" id="answer3">
+          <p>If you need to reset your password, follow these steps:</p>
+          <ol>
+            <li>Go to the ViciLoco login page.</li>
+            <li>Click on the "Forgot Password?" link.</li>
+            <li>Enter the email address associated with your ViciLoco account.</li>
+            <li>Follow the instructions sent to your email to reset your password.</li>
+          </ol>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div id="noselect" class="faq-question" onclick="toggleAnswer(event, 4)">Does ViciLoco have any age restrictions?</div>
+        <div class="faq-answer" id="answer4">
+          <p>Yes, ViciLoco has age restrictions to keep everyone safe.</p>
+          <p>As outlined in the Terms of Use, ViciLoco is 18+ <i>or</i> 13+ with parental consent.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div id="noselect" class="faq-question" onclick="toggleAnswer(event, 5)">Is there a ViciLoco app?</div>
+        <div class="faq-answer" id="answer5">
+          <p>No, ViciLoco does not have an official app, but the website is mobile-friendly and will work fine on your phone. Any apps posing as ViciLoco are not affiliated with ViciLoco and should be reported to the app store and ViciLoco immediately at contact@guessoword.com. Thank you.</p>
+        </div>
+      </div>
+
+      <!-- Add more FAQ items as needed -->
+
+    </div>
+  </section>
+<section class="features">
+<p>Is your question not covered here? Feel free to email vicilocoquestions@gmail.com to ask a staff member something!</p>
+</section>
+
+  <footer>
+    <div class="container">
+      <p>&copy; 2023 ViciLoco. All rights reserved.</p>
+    </div>
+  </footer>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    var questions = document.getElementsByClassName("faq-question");
+    for (var i = 0; i < questions.length; i++) {
+      questions[i].addEventListener("click", toggleAnswer);
+      questions[i].classList.add("closed");
+    }
+  });
+
+  function toggleAnswer(event) {
+    event.stopPropagation();
+    var answer = this.nextElementSibling;
+    answer.style.display = answer.style.display === "none" ? "block" : "none";
+    this.classList.toggle("closed");
+  }
+</script>
+
+
+
+
+</body>
+</html>
