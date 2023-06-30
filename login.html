@@ -1,0 +1,54 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>ViciLoco - Login</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans&family=Montserrat&family=Lato&family=Raleway&family=Roboto&family=Poppins&family=Nunito&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="icon.png">
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EB5C7HF4NF"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-EB5C7HF4NF');
+</script>
+</head>
+<body>
+  <header>
+    <nav>
+      <ul>
+        <li><img style="width: 200px" src="logo.png" alt="ViciLoco"></li>
+        <li><a href="/">Home</a></li>
+        <li><a href="/about">About</a></li>
+        <li><a href="/plus">Plus</a></li>
+        <li><a href="/login">Login</a></li>
+        <li><a href="/signup">Sign Up</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <br><br><section class="signup-form">
+    <div class="container">
+      <h2>Login to connect with neighbors and others around the globe.</h2><br>
+      <form action="https://viciloco.pythonanywhere.com/signup" method="post">
+        <label for="username">Username or Email Address:</label>
+        <input placeholder="Enter your username or email" type="text" id="username" name="username" required><br><br>
+
+        <label for="password">Password:</label>
+        <input placeholder="Enter your password" type="password" id="password" name="password" required><br><br>
+        <input style="font-size: 16px" type="submit" value="Login"><br><br>
+      </form>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <p>&copy; 2023 ViciLoco. All rights reserved.</p>
+    </div>
+  </footer>
+</body>
+</html>
