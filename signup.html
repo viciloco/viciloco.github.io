@@ -1,55 +1,42 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>ViciLoco - Sign Up</title>
-  <link rel="stylesheet" type="text/css" href="style.css">
+  <title>ViciLoco - Finish Signup</title>
+  <link rel="stylesheet" type="text/css" href="https://viciloco.guessoword.com/style.css">
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans&family=Montserrat&family=Lato&family=Raleway&family=Roboto&family=Poppins&family=Nunito&display=swap" rel="stylesheet">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon" href="icon.png">
-  <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-EB5C7HF4NF"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-EB5C7HF4NF');
-</script>
+  <link rel="icon" href="https://viciloco.guessoword.com/icon.png">
 </head>
 <body>
   <header>
     <nav>
       <ul>
-        <li><img style="width: 200px" src="logo.png" alt="ViciLoco"></li>
+        <li><img style="width: 200px" src="https://viciloco.guessoword.com/logo.png" alt="ViciLoco"></li>
         <li><a href="/">Home</a></li>
-        <li><a href="/about">About</a></li>
-        <li><a href="/plus">Plus</a></li>
-        <li><a href="/login">Login</a></li>
-        <li><a href="/signup">Sign Up</a></li>
+        <li><a href="/">Friends</a></li>
+        <li><a href="https://viciloco.guessoword.com/plus">Plus</a></li>
+        <li><a href="/logout">Logout</a></li>
       </ul>
     </nav>
   </header>
 
-  <br><br><section class="signup-form">
+  <section class="hero">
     <div class="container">
-      <h2>Sign Up - A simple and quick process.</h2><br>
-      <h3>Already on ViciLoco? <a href="/login">Login instead</a>.</h3><br>
-      <form action="https://viciloco.pythonanywhere.com/signup" method="post">
-        <label for="username">Username:</label>
-        <input placeholder="Choose an awesome new username" type="text" id="username" name="username" required><br><br>
-
-        <label for="email">Email Address:</label>
-        <input placeholder="Enter your email address to verify" type="email" id="email" name="email" required><br><br>
-
-        <label for="password">Password:</label>
-        <input placeholder="Keep this field secret" type="password" id="password" name="password" required><br><br>
-
-        <label for="confirm-password">Confirm Password:</label>
-        <input placeholder="One more time..." type="password" id="confirm-password" name="confirm-password" required><br><br>
-        <p>By signing up on ViciLoco, you agree to our <a target="_blank" href="/terms">Terms of Use</a> and confirm that you have read and understood our <a target="_blank" href="/privacy">Privacy Policy</a>.<br>
-        Please note that personal details are not shared with <i>any third parties</i> and are kept safe.<br><b>You can add your location at any time after signing up!</b></p><br>
-        <input style="font-size: 16px" type="submit" value="Sign Up"><br><br>
-      </form>
+      <h1><img style="width:120px" src="https://viciloco.guessoword.com/icon.png"></h1>
+      <span>In order to make your experience perfect, please finish adding all details.</span><br>
+      <small><b><i>None of these details are shared or reviewed by anyone.</i></b><br>Please specify <b>where you live</b>, <b>not the location you associate with or are culturally related to</b>.</small><br><br>
+      <form action="/finish-signup-submit" method="post">
+      <input style="width: 52%" type="text" id="city" name="city" placeholder="City/Town" required><br>
+      <div class="select-wrapper">
+        <input style="width: 52%" type="text" id="country-input" class="select-input" placeholder="Country" required>
+        <ul id="country-list" class="select-list">
+        </ul>
+      </div>
+      <a target="_blank" href="https://viciloco.guessoword.com/countries">Is your country not in our list?</a><br><br>
+      <span>We emailed you a 6-digit verification code. Please enter it below:</span><br>
+      <input style="width: 52%" type="text" id="code" name="code" placeholder="Verification Code" required><br>
+      <span>Please note that you <b>must</b> enter valid information for ViciLoco to perform correctly.</span><br>
+      <input style="font-size: 16px" type="submit" value="Start Using ViciLoco"></form>
     </div>
   </section>
 
@@ -58,5 +45,79 @@
       <p>&copy; 2023 ViciLoco. All rights reserved.</p>
     </div>
   </footer>
+  <script>
+    const countryInput = document.getElementById('country-input');
+    const countryList = document.getElementById('country-list');
+
+    // List of UN countries
+    const countries = [
+      "Afghanistan", "Albania", "Algeria", "Andorra", "Angola", "Antigua and Barbuda", "Argentina", "Armenia", "Australia", "Austria",
+      "Azerbaijan", "Bahamas", "Bahrain", "Bangladesh", "Barbados", "Belarus", "Belgium", "Belize", "Benin", "Bhutan", "Bolivia",
+      "Bosnia and Herzegovina", "Botswana", "Brazil", "Brunei Darussalam", "Bulgaria", "Burkina Faso", "Burundi", "Cabo Verde", "Cambodia",
+      "Cameroon", "Canada", "Central African Republic", "Chad", "Chile", "China", "Colombia", "Comoros", "Congo", "Costa Rica", "Côte d'Ivoire",
+      "Croatia", "Cuba", "Cyprus", "Czech Republic", "Democratic People's Republic of Korea", "Democratic Republic of the Congo", "Denmark",
+      "Djibouti", "Dominica", "Dominican Republic", "Ecuador", "Egypt", "El Salvador", "Equatorial Guinea", "Eritrea", "Estonia", "Eswatini",
+      "Ethiopia", "Fiji", "Finland", "France", "Gabon", "Gambia", "Georgia", "Germany", "Ghana", "Greece", "Grenada", "Guatemala", "Guinea",
+      "Guinea-Bissau", "Guyana", "Haiti", "Honduras", "Hungary", "Iceland", "India", "Indonesia", "Iran", "Iraq", "Ireland", "Israel", "Italy",
+      "Jamaica", "Japan", "Jordan", "Kazakhstan", "Kenya", "Kiribati", "Kuwait", "Kyrgyzstan", "Lao People's Democratic Republic", "Latvia",
+      "Lebanon", "Lesotho", "Liberia", "Libya", "Liechtenstein", "Lithuania", "Luxembourg", "Madagascar", "Malawi", "Malaysia", "Maldives",
+      "Mali", "Malta", "Marshall Islands", "Mauritania", "Mauritius", "Mexico", "Micronesia", "Monaco", "Mongolia", "Montenegro", "Morocco",
+      "Mozambique", "Myanmar", "Namibia", "Nauru", "Nepal", "Netherlands", "New Zealand", "Nicaragua", "Niger", "Nigeria", "North Macedonia",
+      "Norway", "Oman", "Pakistan", "Palau", "Panama", "Papua New Guinea", "Paraguay", "Peru", "Philippines", "Poland", "Portugal", "Qatar",
+      "Republic of Korea", "Republic of Moldova", "Romania", "Russian Federation", "Rwanda", "Saint Kitts and Nevis", "Saint Lucia",
+      "Saint Vincent and the Grenadines", "Samoa", "San Marino", "Sao Tome and Principe", "Saudi Arabia", "Senegal", "Serbia", "Seychelles",
+      "Sierra Leone", "Singapore", "Slovakia", "Slovenia", "Solomon Islands", "Somalia", "South Africa", "South Sudan", "Spain", "Sri Lanka",
+      "State of Palestine", "Sudan", "Suriname", "Sweden", "Switzerland", "Syrian Arab Republic", "Tajikistan", "Thailand", "Timor-Leste", "Togo",
+      "Tonga", "Trinidad and Tobago", "Tunisia", "Turkey", "Turkmenistan", "Tuvalu", "Uganda", "Ukraine", "United Arab Emirates",
+      "United Kingdom of Great Britain and Northern Ireland", "United Republic of Tanzania", "United States of America", "Uruguay",
+      "Uzbekistan", "Vanuatu", "Venezuela", "Vietnam", "Yemen", "Zambia", "Zimbabwe"
+    ];
+
+// Populate the country list
+  countries.forEach(country => {
+    const listItem = document.createElement('li');
+    listItem.textContent = country;
+    listItem.classList.add('select-item'); // Add the "select-item" class to each list item
+    countryList.appendChild(listItem);
+  });
+
+  const selectItems = Array.from(countryList.getElementsByTagName('li'));
+
+  countryInput.addEventListener('input', filterCountries);
+  countryInput.addEventListener('focus', showCountryList);
+  countryInput.addEventListener('blur', hideCountryList);
+
+  selectItems.forEach(item => {
+    item.addEventListener('click', selectCountry);
+  });
+
+  function filterCountries() {
+    const searchTerm = countryInput.value.toLowerCase();
+    selectItems.forEach(item => {
+      const countryName = item.textContent.toLowerCase();
+      if (countryName.includes(searchTerm)) {
+        item.style.display = 'block';
+      } else {
+        item.style.display = 'none';
+      }
+    });
+  }
+
+  function showCountryList() {
+    countryList.style.display = 'block';
+  }
+
+  function hideCountryList() {
+    setTimeout(() => {
+      countryList.style.display = 'none';
+    }, 200);
+  }
+
+  function selectCountry(event) {
+    const selectedCountry = event.target.textContent;
+    countryInput.value = selectedCountry;
+    hideCountryList();
+  }
+</script>
 </body>
 </html>
